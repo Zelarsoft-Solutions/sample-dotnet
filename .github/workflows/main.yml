@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     
     steps:
     - name: Checkout code
@@ -51,5 +52,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: zelar11
+        #slot-name: <slot-name>
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISH_PROFILE }}
         package: ./publish
