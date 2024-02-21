@@ -8,6 +8,11 @@ on:
     branches:
       - '*'
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'main'
 jobs:
   build:
     runs-on: ubuntu-latest
