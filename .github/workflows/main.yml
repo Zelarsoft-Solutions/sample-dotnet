@@ -50,20 +50,20 @@ jobs:
        #exclude-workflow-initiator-as-approver: true
        #additional-approved-words: ''
        #additional-denied-words: ''
-    - name: Checkout code
-      uses: actions/checkout@v2
+     - name: Checkout code
+       uses: actions/checkout@v2
       
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
+     - name: Setup .NET
+       uses: actions/setup-dotnet@v1
+       with:
         dotnet-version: '6.0'
         
-    - name: Publish
-      run: dotnet publish -c Release -o ./publish
+     - name: Publish
+       run: dotnet publish -c Release -o ./publish
       
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
+     - name: Deploy to Azure Web App
+       uses: azure/webapps-deploy@v2
+       with:
         app-name: zelar11
         #slot-name: <slot-name>
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISH_PROFILE }}
