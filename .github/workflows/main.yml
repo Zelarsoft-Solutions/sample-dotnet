@@ -36,6 +36,10 @@ jobs:
     #needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && 'workflow_dispatch'
     steps:
+    - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: giritkp,bhargavguntreddi98,bhargav101010
     - name: Checkout code
       uses: actions/checkout@v2
       
