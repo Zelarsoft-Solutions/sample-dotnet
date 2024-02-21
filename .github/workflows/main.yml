@@ -25,12 +25,8 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       
-    - name: dotnet build and publish
-      working-directory:  app
-      run: |
-          dotnet restore
-          dotnet build --configuration Release
-          dotnet publish -c Release -o './published-app'
+    - name: Build
+      run : dotnet build
       
     - name: Test
       run: dotnet test
