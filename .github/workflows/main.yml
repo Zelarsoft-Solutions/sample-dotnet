@@ -33,7 +33,7 @@ jobs:
       with:
        secret: ${{ secrets.GITHUBTOKEN }}
        approvers: bhargavguntreddi98,giritkp
-       minimum-approvals: 1
+       minimum-approvals: 2
        issue-title: "Deploying v9.0.0 from feature to main"
        issue-body: "Please approve or deny the deployment of version v9.0.0"
        exclude-workflow-initiator-as-approver: false
