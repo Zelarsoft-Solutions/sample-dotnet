@@ -43,7 +43,7 @@ jobs:
       with:
         app-name: zelar12
         #slot-name: <slot-name>
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISH_PROFILE }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISH_PROFILE_STAGING }}
         package: ./publish
   deploy-Release:
     runs-on: ubuntu-latest
