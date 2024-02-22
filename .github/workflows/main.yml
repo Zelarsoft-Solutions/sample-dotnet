@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - Release
   pull_request:
     branches:
       - '*'
@@ -31,7 +32,7 @@ jobs:
     - name: Test
       run: dotnet test
       
-  deploy:
+  deploy-main:
     runs-on: ubuntu-latest
     #needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && 'workflow_dispatch'
