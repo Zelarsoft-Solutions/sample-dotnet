@@ -5,8 +5,7 @@ on:
       - Release
   pull_request:
     branches:
-      - feature
-      - staging
+      - '*'
   workflow_dispatch:
   
 jobs:
@@ -34,7 +33,7 @@ jobs:
     - uses: trstringer/manual-approval@v1
       with:
        secret: ${{ secrets.GITHUBTOKEN }}
-       approvers: giritkp,bhargavguntreddi98
+       approvers: giritkp,bhargavguntreddi98,rinizelar
        minimum-approvals: 1
        issue-title: "Deploying v9.0.0 from feature to main"
        issue-body: "Please approve or deny the deployment of version v9.0.0"
