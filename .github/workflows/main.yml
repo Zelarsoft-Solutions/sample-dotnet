@@ -58,21 +58,21 @@ jobs:
         package: ./publish
   deploy-Release:
     runs-on: ubuntu-latest
-    environment: 
-      name: Release
+    # environment: 
+    #   name: Release
     #needs: deploy-staging
     if: github.event_name == 'push' && github.ref == 'refs/heads/Release' && 'workflow_dispatch'
     steps:
-    # - uses: trstringer/manual-approval@v1
-    #   with:
-    #    secret: ${{ secrets.GITHUBTOKEN }}
-    #    approvers: giritkp,bhargavguntreddi98
-    #    minimum-approvals: 1
-    #    issue-title: "Deploying v9.0.0 from feature to main"
-    #    issue-body: "Please approve or deny the deployment of version v9.0.0"
-    #    exclude-workflow-initiator-as-approver: false
-    #    additional-approved-words: ''
-    #    additional-denied-words: ''
+    - uses: trstringer/manual-approval@v1
+      with:
+       secret: ${{ secrets.GITHUBTOKEN }}
+       approvers: giritkp,bhargavguntreddi98
+       minimum-approvals: 1
+       issue-title: "Deploying v9.0.0 from feature to main"
+       issue-body: "Please approve or deny the deployment of version v9.0.0"
+       exclude-workflow-initiator-as-approver: false
+       additional-approved-words: ''
+       additional-denied-words: ''
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Setup .NET
