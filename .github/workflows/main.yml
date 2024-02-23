@@ -2,7 +2,7 @@ name: CI/CD for .NET
 on:
   push:
     branches:
-      - staging
+      - Release
   pull_request:
     branches:
       - '*'
