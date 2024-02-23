@@ -5,7 +5,8 @@ on:
       - staging
   pull_request:
     branches:
-      - '*'
+      - feature
+      - staging
   workflow_dispatch:
   
 jobs:
