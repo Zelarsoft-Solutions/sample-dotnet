@@ -1,0 +1,37 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - Staging
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    runs-on: windows-latest
+    environment: 
+      name: staging
+    if: github.event_name == 'push' && github.ref == 'refs/heads/Staging' && github.event.workflow_dispatch
+    steps:
+      # - uses: trstringer/manual-approval@v1
+      #   with:
+      #     secret: ${{ secrets.GITHUBTOKEN }}
+      #     approvers: rinizelar,Bhargavnaidu-zelar
+      #     minimum-approvals: 1
+      #     exclude-workflow-initiator-as-approver: false
+      #     additional-approved-words: ''
+      #     additional-denied-words: ''
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0'
+      - name: Publish
+        run: dotnet publish -c Release -o ./publish
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: zelar12
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISH_PROFILE_STAGING }}
+          package: ./publish
