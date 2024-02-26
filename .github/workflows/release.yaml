@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     environment: 
       name: Release
-    if: github.event_name == 'push' && github.ref == 'refs/heads/Release' && github.event.workflow_dispatch
+    #if: github.event_name == 'push' && github.ref == 'refs/heads/Release' && github.event.workflow_dispatch
     steps:
       # - uses: trstringer/manual-approval@v1
       #   with:
